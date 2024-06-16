@@ -32,5 +32,10 @@ public class UserPreference extends BaseEntity {
     @JoinColumn(name = "preference_id")
     private Preference preference;
 
-
+    public void setUser(User user){
+        if(this.user != null)
+            user.getUserPreferenceList().remove(this);
+        this.user = user;
+        user.getUserPreferenceList().add(this);
+    }
 }

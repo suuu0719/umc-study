@@ -21,7 +21,6 @@ public class UMServiceImpl implements UMService {
     public UserMission makeUM (@Valid UMRequestDTO.UMDTO um){
         UserMission newUM = UMConverter.toUM(um);
 
-        newUM.setStatus(Status.IN_PROGRESS);
         return umRepository.save(newUM);
     }
 }
