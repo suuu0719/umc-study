@@ -10,11 +10,13 @@ import umc.spring.domain.enums.Status;
 import umc.spring.domain.mapping.UserMission;
 import umc.spring.repository.UMRepository;
 import umc.spring.validation.annotation.ChallengingMission;
+import umc.spring.web.dto.UMRequestDTO;
+
 import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class ChallengingMissionValidator implements ConstraintValidator<ChallengingMission, UserMission> {
+public class ChallengingMissionValidator implements ConstraintValidator<ChallengingMission, UMRequestDTO.UMDTO> {
 
     private final UMRepository umRepository;
 
@@ -24,9 +26,9 @@ public class ChallengingMissionValidator implements ConstraintValidator<Challeng
     }
 
     @Override
-    public boolean isValid(UserMission userMission, ConstraintValidatorContext context) {
-        Long userId = userMission.getUser().getId();
-        Long missionId = userMission.getMission().getId();
+    public boolean isValid(UMRequestDTO.UMDTO umdto, ConstraintValidatorContext context) {
+        Long userId = umdto.getUser();
+        Long missionId = umdto.getMission();
 
         // UMRepository를 사용하여 userId와 missionId를 기반으로 UserMission 조회
         Optional<UserMission> existingMission = umRepository.findByUserIdAndMissionId(userId, missionId);

@@ -10,6 +10,7 @@ import umc.spring.validation.annotation.ExistUsers;
 public class UMRequestDTO {
 
     @Getter
+    @ChallengingMission
     public static class UMDTO {
 
 
@@ -18,7 +19,6 @@ public class UMRequestDTO {
         private Long user;
 
         @ExistMissions
-        @ChallengingMission
         @NotNull(message = "미션 ID는 필수입니다.")
         private Long mission;
 
