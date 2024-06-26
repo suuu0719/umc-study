@@ -22,8 +22,10 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // For test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
-    PREFERENCE_NOT_FOUND(HttpStatus.BAD_REQUEST, "COMMON4001", "존재하지 않는 카테고리");
+    PREFERENCE_NOT_FOUND(HttpStatus.BAD_REQUEST, "COMMON4001", "존재하지 않는 카테고리"),
 
+    //페이징 에러
+    PAGE_NOT_FOUND(HttpStatus.BAD_REQUEST, "PAGE4001", "존재하지 않는 페이지")
 
 
     ;

@@ -3,12 +3,11 @@ package umc.spring.converter;
 import umc.spring.domain.Mission;
 import umc.spring.domain.Review;
 import umc.spring.domain.Store;
-import umc.spring.web.dto.MissionRequestDTO;
-import umc.spring.web.dto.MissionResponseDTO;
-import umc.spring.web.dto.ReviewRequestDTO;
-import umc.spring.web.dto.ReviewResponseDTO;
+import umc.spring.domain.mapping.UserMission;
+import umc.spring.web.dto.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MissionConverter {
     public static MissionResponseDTO.MissionResultDTO toMissionResultDTO(Mission mission) {

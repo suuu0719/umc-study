@@ -2,6 +2,7 @@ package umc.spring.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.enums.Status;
 import umc.spring.domain.mapping.UserMission;
 
 import java.util.ArrayList;
@@ -22,12 +23,17 @@ public class Mission extends BaseEntity {
 
     private Integer point;
 
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.IN_PROGRESS;
+
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private List<UserMission> userMissionList = new ArrayList<>();
+
+
 
 
 }
