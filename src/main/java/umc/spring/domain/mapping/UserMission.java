@@ -23,7 +23,7 @@ public class UserMission extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.IN_PROGRESS;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

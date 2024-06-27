@@ -10,23 +10,47 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class MissionResponseDTO {
+public class StoreResponseDTO {
+
+
+
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class MissionResultDTO{
-        Long missionID;
-        LocalDateTime createdAt;
+    public static class CreateReviewResultDTO{
+        Long reviewId;
+        LocalDate createdAt;
     }
-
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewPreViewListDTO{
+        List<ReviewPreViewDTO> reviewList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
+    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewPreViewDTO{
+        String ownerNickname;
+        Float score;
+        String body;
+        LocalDate createdAt;
+    }
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class MissionPreViewListDTO{
-        List<MissionResponseDTO.MissionPreViewDTO> missionList;
+        List<MissionPreViewDTO> missionList;
         Integer listSize;
         Integer totalPage;
         Long totalElements;

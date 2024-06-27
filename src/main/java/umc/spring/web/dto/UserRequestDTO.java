@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import umc.spring.domain.enums.Gender;
 import umc.spring.validation.annotation.ExistCategories;
+import umc.spring.validation.annotation.ExistStores;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,5 +30,13 @@ public class UserRequestDTO {
         @ExistCategories
         List<Long> userPreference;
 
+    }
+
+    @Getter
+    public static class ReviewDTO{
+        @NotNull
+        Float score;
+        @NotBlank
+        String body;
     }
 }
