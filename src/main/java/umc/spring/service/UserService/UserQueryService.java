@@ -8,5 +8,6 @@ import umc.spring.domain.User;
 import java.util.Optional;
 
 public interface UserQueryService {
+    Page<Review> getUserReviewList(Long UserId, Integer Page);
 
 }

@@ -32,5 +32,11 @@ public class UserRequestDTO {
 
     }
 
-
+    @Getter
+    public static class ReviewDTO{
+        @NotNull
+        Float score;
+        @NotBlank
+        String body;
+    }
 }

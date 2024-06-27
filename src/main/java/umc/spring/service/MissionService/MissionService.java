@@ -10,4 +10,6 @@ import java.util.Optional;
 
 public interface MissionService {
     Mission addMission(MissionRequestDTO.MissionDTO mission);
+    Page<Mission> getUserMissionList(Long UserId, Integer page);
+
 }

@@ -14,14 +14,20 @@ import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.converter.MissionConverter;
 import umc.spring.converter.StoreConverter;
+import umc.spring.converter.UMConverter;
 import umc.spring.domain.Mission;
+import umc.spring.domain.mapping.UserMission;
 import umc.spring.service.MissionService.MissionService;
+import umc.spring.service.MissionService.MissionServiceImpl;
 import umc.spring.service.StoreService.StoreQueryServiceImpl;
+import umc.spring.service.UserMissionService.UMServiceImpl;
 import umc.spring.validation.annotation.CheckPage;
 import umc.spring.validation.annotation.ExistStores;
+import umc.spring.validation.annotation.ExistUsers;
 import umc.spring.web.dto.MissionRequestDTO;
 import umc.spring.web.dto.MissionResponseDTO;
 import umc.spring.web.dto.StoreResponseDTO;
+import umc.spring.web.dto.UMResponseDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,7 +36,10 @@ import umc.spring.web.dto.StoreResponseDTO;
 public class MissionRestController {
     private final MissionService missionService;
     private final StoreQueryServiceImpl storeQueryServiceImpl;
+    private final UMServiceImpl umServiceImpl;
+    private final MissionServiceImpl missionServiceImpl;
     private final StoreConverter storeConverter;
+    private final MissionConverter missionConverter;
 
 
     @PostMapping("/missions")
@@ -60,4 +69,5 @@ public class MissionRestController {
 
         return ApiResponse.onSuccess(missionPreviewListDTO);
     }
+
 }

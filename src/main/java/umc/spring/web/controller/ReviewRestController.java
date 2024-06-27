@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.converter.ReviewConverter;
 import umc.spring.converter.StoreConverter;
+import umc.spring.converter.UMConverter;
 import umc.spring.converter.UserConverter;
 import umc.spring.domain.Mission;
 import umc.spring.domain.Review;
@@ -21,14 +22,12 @@ import umc.spring.domain.User;
 import umc.spring.service.ReviewService.ReviewCommandService;
 import umc.spring.service.StoreService.StoreQueryService;
 import umc.spring.service.StoreService.StoreQueryServiceImpl;
+import umc.spring.service.UserMissionService.UMServiceImpl;
 import umc.spring.service.UserService.UserQueryServiceImpl;
 import umc.spring.validation.annotation.CheckPage;
 import umc.spring.validation.annotation.ExistStores;
 import umc.spring.validation.annotation.ExistUsers;
-import umc.spring.web.dto.ReviewRequestDTO;
-import umc.spring.web.dto.ReviewResponseDTO;
-import umc.spring.web.dto.StoreResponseDTO;
-import umc.spring.web.dto.UserResponseDTO;
+import umc.spring.web.dto.*;
 
 import java.util.List;
 
@@ -40,6 +39,8 @@ public class ReviewRestController {
     private final ReviewCommandService reviewCommandService;
     private final StoreQueryServiceImpl storeQueryServiceImpl;
     private final StoreConverter storeConverter;
+    private final UMServiceImpl umServiceImpl;
+    private final UMConverter umConverter;
 
 
     @PostMapping("/reviews")
@@ -64,7 +65,7 @@ public class ReviewRestController {
     public ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistStores @PathVariable(name="storeId") Long storeId,
                                                                            @CheckPage @RequestParam(name="page") Integer page){
 
-        if (page == 1 ) {page = 0 ;}
+        if (page == 1 ) { page = 0 ;}
 
         Page<Review> ReviewList = storeQueryServiceImpl.getReviewList(storeId, page);
 
@@ -72,6 +73,7 @@ public class ReviewRestController {
 
         return ApiResponse.onSuccess(reviewPreviewListDto);
     }
+
 
 
 }
